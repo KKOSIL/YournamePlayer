@@ -1,0 +1,238 @@
+#body{
+    background-color: #121212;
+}
+
+/* 전체 래퍼 */
+#wrap {
+    background-color: #1c1c1c;
+    margin-top: 100px;
+    width: 600px; /* 전체 너비 */
+    margin: auto; /* 가운데 정렬 */
+    margin-top: 100px;
+}
+
+/* 공통 셀 스타일 */
+.cell {
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+}
+
+#trackNo {
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+}
+
+/* 첫 번째 행 스타일 */
+#row-1 {
+    display: grid;
+    grid-template-columns: 300px 200px 100px; /* 3개의 열로 나눔 */
+    grid-template-rows: 40px; /* 행 높이 */
+    align-items: center; /* 세로 가운데 정렬 */
+    border: 1px solid green;
+ }
+
+ /* 부모 요소에 relative 추가 */
+#cell {
+    position: relative; /* 기준점을 설정 */
+}
+
+
+/* 셀렉트 박스 스타일 */
+#track-selector {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 5px;
+    
+}
+
+/* 툴팁 스타일 */
+.tooltip {
+    visibility: hidden; /* 기본적으로 숨김 */
+    width: 150px;
+    background-color: rgb(44, 68, 172);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    top: 40px; /* 셀렉트 박스 아래로 위치 */
+    left: 0;
+    z-index: 2; /* 다른 요소 위에 표시 */
+}
+
+/* 셀렉트 박스에 마우스를 올렸을 때 툴팁 표시 */
+#track-selector:hover + .tooltip {
+    visibility: visible; /* 마우스 오버 시 툴팁 표시 */
+}
+
+#cell2 {
+    position: relative; /* 기준점 설정 */
+}
+
+/* 음소거 버튼 스타일 */
+.mute-btn {
+    width: 20px; /* 버튼 너비 */
+    height: 20px; /* 버튼 높이 */
+    border-radius: 50%; /* 원형으로 만들기 */
+    background-color: transparent; /* 투명 배경 */
+    color: black; /* 아이콘 색상 */
+    font-size: 16px; /* 아이콘 크기 */
+    border: none; /* 테두리 제거 */
+    cursor: pointer;
+    text-align: left;
+}
+
+.mute-btn:hover {
+    color: #1db954; /* 호버 시 초록색으로 변경 */
+}
+
+#muted {
+    visibility: hidden; 
+    position: absolute; 
+    background-color: rgb(44, 68, 172);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    top: 20px; /* 버튼 위로 표시 (필요에 따라 조정) */
+    left: 50%; /* 버튼 중앙 정렬 */
+    transform: translateX(-50%); /* 수평 중앙 정렬 요건 참고*/
+    z-index: 2; /* 다른 요소 위에 표시 */
+    width: 100px;
+}
+
+/* 마우스 오버 시 툴팁 표시 */
+.mute-btn:hover + #muted {
+    visibility: visible; 
+}
+
+/* 두 번째 행 스타일 */
+#row-2 {
+    display: grid;
+    grid-template-columns: 600px; /* 한 열로 구성 */
+    grid-template-rows: 80px;
+    color: white;
+    font-size: 46px;
+    padding-top: 40px;
+    
+}
+
+/* 세 번째 행 스타일 */
+#row-3 {
+    display: grid;
+    grid-template-columns: 50px 500px 50px; /* 세 열로 나눔 */
+    grid-template-rows: 512px;
+}
+
+/* 볼륨 슬라이더 컨테이너 */
+.volume-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* 세로 중앙 정렬 */
+}
+
+/* 세로형 볼륨 슬라이더 */
+.vertical-slider {
+    -webkit-appearance: none; /* 기본 브라우저 스타일 제거 */
+    appearance: none;
+    width: 150px; /* 슬라이더 높이 (회전 전 기준) */
+    height: 8px; /* 슬라이더 너비 (회전 전 기준) */
+    background: #d3d3d3; /* 기본 배경색 (옅은 회색) */
+    outline: none;
+    border-radius: 5px; /* 모서리 둥글게 */
+    transform: rotate(-90deg); /* 슬라이더를 세로형으로 회전 (위아래 조작 가능) */
+    transform-origin: center; /* 회전 중심 설정 */
+}
+
+/* 활성화된 부분 색상 (크롬, 사파리 등 웹킷 브라우저용) */
+.vertical-slider::-webkit-slider-runnable-track {
+    background: #d3d3d3; /* 기본 배경색 */
+}
+
+.vertical-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px; /* 핸들 너비 */
+    height: 15px; /* 핸들 높이 */
+    background: #333; /* 핸들 색상 (진한 회색) */
+    cursor: pointer;
+    border-radius: 50%; /* 원형 핸들 */
+}
+
+/* 파이어폭스용 핸들 스타일 */
+.vertical-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #333; /* 핸들 색상 (진한 회색) */
+    cursor: pointer;
+    border-radius: 50%; /* 원형 핸들 */
+}
+
+
+#pic {
+    width: 510px;
+    height: 510px;
+}
+
+#row-4 {
+    height: 48px;
+    font-size: 36px;
+}
+
+#row-5 {
+    height: 40px;
+    font-size: 30px;
+}
+
+/* 여섯 번째 행 스타일 */
+#row-6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6개의 열로 나눔 */
+    justify-items: center;
+    align-items: center;
+}
+
+/* 재생 컨트롤 버튼 */
+.circle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #1db954;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.circle-btn:hover {
+    background-color: #17a44c;
+}
+
+/* 재생바 */
+#progress-bar {
+    width: 80%;
+    
+}
+
+#current-time, #duration-time {
+    font-size: 14px;
+}
+#row-7 {
+    height: 40px;
+    font-size: 30px;
+}
+
+#track-title{
+    font-size: 30px;
+    color: white;
+}
+
+#track-artist {
+    font-size: 26px;
+    color: white;
+}
